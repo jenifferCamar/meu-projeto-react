@@ -8,6 +8,7 @@ Jogo de habilidade desenvolvido com React e Vite. O objetivo é soltar blocos no
 - Interface responsiva para computador e celular.
 - Projeto versionado com Git e preparado para publicação no GitHub.
 - Deploy configurado para a Vercel por meio do arquivo `vercel.json`.
+- Jogo publicado em: [Empilha! na Vercel](https://meu-projeto-react-jet.vercel.app)
 - Jogo executado localmente no navegador, sem IA, backend, API ou banco de dados.
 
 ## Funcionalidades
