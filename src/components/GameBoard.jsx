@@ -1,11 +1,12 @@
 import React from 'react';
 
-export default function GameBoard({ stack, activeBlock, onDrop, status, feedback, towerHeight }) {
+export default function GameBoard({ stack, activeBlock, onDrop, status, feedback, towerHeight, screenShake }) {
   const cameraOffset = Math.max(0, (stack.length - 10) * 34);
 
   return (
     <div
-      className="game-board"
+      className={`game-board ${screenShake > 0 ? 'shaking' : ''}`}
+      style={{ transform: screenShake > 0 ? `translate(${Math.random() * screenShake - screenShake / 2}px, ${Math.random() * screenShake - screenShake / 2}px)` : 'none' }}
       aria-label="Área do jogo. Clique para soltar o bloco."
       role="button"
       tabIndex="0"
@@ -20,11 +21,6 @@ export default function GameBoard({ stack, activeBlock, onDrop, status, feedback
       <div className="board-topline">
         <span className="board-label">torre em construção</span>
         <span className="board-height">{String(towerHeight).padStart(2, '0')} blocos</span>
-      </div>
-      <div className="board-stars" aria-hidden="true">
-        <span className="star star-one">✦</span>
-        <span className="star star-two">·</span>
-        <span className="star star-three">✦</span>
       </div>
 
       {stack.map((block) => (
@@ -56,7 +52,7 @@ export default function GameBoard({ stack, activeBlock, onDrop, status, feedback
       {feedback && (
         <div className={`drop-feedback ${feedback.type}`} key={feedback.id} aria-live="polite">
           <strong>{feedback.message}</strong>
-          {feedback.points > 0 && <span>+{feedback.points} pts</span>}
+          {feedback.points > 0 && <span>+{feedback.points}</span>}
         </div>
       )}
       <span className="board-hint">clique ou pressione espaço</span>
